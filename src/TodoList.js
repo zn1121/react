@@ -25,6 +25,14 @@ export default class TodoList extends Component {
             e.target.value="";
         }
     }
+    handledel = (e)=>{
+        
+            store.dispatch({
+                type:'del_item',
+                value:e
+            });
+        
+    }
     render(){
         return(
             <div>
@@ -32,7 +40,9 @@ export default class TodoList extends Component {
                 <ul>
                     {
                         this.state.list.map((item,index)=>(
-                            <li key={index}>{item}</li>
+                            <li key={index}>{item}
+                                <button className="but" onClick={(e)=>{this.handledel({index})}}>删除</button>
+                            </li>
                         ))
                     }
                 </ul>
